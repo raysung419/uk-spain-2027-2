@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#ffffff">
+<title>2027 英國・西班牙 16日深度旅遊手冊</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --uk: #1d4ed8;
+    --uk-bg: #eff6ff;
+    --uk-border: #bfdbfe;
+    --es: #b91c1c;
+    --es-bg: #fef2f2;
+    --es-border: #fecaca;
+    --accent: #0f766e;
+    --accent-bg: #f0fdfa;
+    --warn: #b45309;
+    --warn-bg: #fffbeb;
+    --warn-border: #fde68a;
+    --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --radius: 14px;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  body {
+    margin: 0;
+    padding-top: var(--safe-top);
+    padding-bottom: calc(80px + var(--safe-bottom));
+    font-size: 16px;
+  }
+
+  /* Header */
+  .app-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 16px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  }
+
+  .header-top {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .title-group h1 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .title-group p {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+  }
+
+  .search-box {
+    max-width: 860px;
+    margin: 10px auto 0;
+    position: relative;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 10px 38px 10px 36px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-2);
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .search-box input:focus {
+    background: var(--surface);
+    border-color: var(--uk);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 0.95rem;
+    pointer-events: none;
+  }
+
+  .clear-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #cbd5e1;
+    color: #fff;
+    border: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 13px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Main Container */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 14px 14px 24px;
+  }
+
+  /* Tab Views */
+  .view-section {
+    display: none;
+  }
+  .view-section.active {
+    display: block;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Day Scroller */
+  .day-scroller-wrap {
+    position: sticky;
+    top: 103px;
+    z-index: 90;
+    background: rgba(248, 250, 252, 0.94);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    margin: -14px -14px 14px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-scroller {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+  .day-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .day-pill {
+    flex: 0 0 auto;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.25;
+  }
+
+  .day-pill span.sub {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .day-pill.uk.active {
+    background: var(--uk);
+    color: #fff;
+    border-color: var(--uk);
+  }
+
+  .day-pill.es.active {
+    background: var(--es);
+    color: #fff;
+    border-color: var(--es);
+  }
+
+  .day-pill.transit.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .badge.uk { background: var(--uk-bg); color: var(--uk); border: 1px solid var(--uk-border); }
+  .badge.es { background: var(--es-bg); color: var(--es); border: 1px solid var(--es-border); }
+  .badge.transit { background: var(--accent-bg); color: var(--accent); border: 1px solid #99f6e4; }
+
+  .day-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 6px 0 2px;
+    color: var(--text);
+  }
+
+  .day-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 18px;
+    margin: 14px 0 6px;
+    border-left: 2px solid var(--border);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 14px;
+  }
+  .tl-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -23px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--uk);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--uk);
+  }
+
+  .es-card .tl-item::before {
+    background: var(--es);
+    box-shadow: 0 0 0 1px var(--es);
+  }
+
+  .tl-time {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--uk);
+    background: var(--uk-bg);
+    padding: 1px 7px;
+    border-radius: 5px;
+    margin-bottom: 3px;
+  }
+
+  .es-card .tl-time {
+    color: var(--es);
+    background: var(--es-bg);
+  }
+
+  .tl-main {
+    font-size: 0.96rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .tl-sub {
+    margin: 4px 0 0;
+    padding-left: 16px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .tl-sub li {
+    margin-bottom: 3px;
+  }
+
+  /* Accordion / Deep Guide */
+  details.guide-box {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  details.guide-box summary {
+    padding: 12px 14px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    user-select: none;
+  }
+
+  details.guide-box summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.guide-box summary::after {
+    content: "＋";
+    font-size: 1.1rem;
+    color: var(--text-light);
+    transition: transform 0.2s;
+  }
+
+  details.guide-box[open] summary::after {
+    content: "－";
+  }
+
+  details.guide-box[open] summary {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .guide-content {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .guide-content h4 {
+    margin: 12px 0 6px;
+    font-size: 0.95rem;
+    color: var(--text);
+    border-left: 3px solid var(--accent);
+    padding-left: 8px;
+  }
+  .guide-content h4:first-child {
+    margin-top: 0;
+  }
+
+  .guide-content ul {
+    margin: 4px 0 10px;
+    padding-left: 18px;
+  }
+  .guide-content li {
+    margin-bottom: 5px;
+  }
+
+  /* Alert / Callout */
+  .callout {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 10px;
+    padding: 11px 13px;
+    font-size: 0.88rem;
+    color: #78350f;
+    margin: 10px 0;
+  }
+
+  .callout strong {
+    color: #92400e;
+  }
+
+  /* Info Grid & Copy Button */
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--border);
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+  .info-row:last-child {
+    border-bottom: none;
+  }
+  .info-label {
+    color: var(--text-light);
+    font-size: 0.84rem;
+  }
+  .info-val {
+    font-weight: 600;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .copy-btn {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 9px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .copy-btn:active {
+    background: #e2e8f0;
+  }
+
+  /* Checklist */
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .check-item:last-child {
+    border-bottom: none;
+  }
+  .check-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+  .check-item.done .check-text {
+    text-decoration: line-through;
+    color: var(--text-light);
+  }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 10px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    background: var(--surface);
+  }
+  th, td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--surface-2);
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* Links */
+  a.ext-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--uk);
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--uk-bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.84rem;
+    margin: 3px 4px 3px 0;
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 4px calc(6px + var(--safe-bottom));
+    z-index: 200;
+    box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.05);
+  }
+
+  .nav-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px 2px;
+    color: var(--text-light);
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+
+  .nav-btn .icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .nav-btn.active {
+    color: var(--uk);
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 85px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1e293b;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s;
+    z-index: 300;
+    white-space: nowrap;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Search Highlight */
+  .search-results-banner {
+    background: var(--uk-bg);
+    color: var(--uk);
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    body { font-size: 16px; }
+    .title-group h1 { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-top">
+    <div class="title-group">
+      <h1>🇬🇧🇪🇸 2027 英西 16日旅遊手冊</h1>
+      <p>2027/04/16 (五) – 05/01 (六) ・ 隨身離線版</p>
+    </div>
+  </div>
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="search" id="searchInput" placeholder="搜尋景點、地鐵線、訂位代號、畫作、美食..." autocomplete="off">
+    <button class="clear-btn" id="clearSearch" aria-label="清除搜尋">✕</button>
+  </div>
+</header>
+
+<main class="container">
+  <div id="searchBanner" class="search-results-banner">
+    <span id="searchCount">找到 0 筆相關內容</span>
+    <button class="copy-btn" onclick="resetSearch()">返回全部</button>
+  </div>
+
+  <!-- TAB 1: 每日行程 -->
+  <section id="tab-itinerary" class="view-section active">
+    <div class="day-scroller-wrap" id="dayScrollerWrap">
+      <div class="day-scroller" id="dayScroller"></div>
+    </div>
+    <div id="daysContainer"></div>
+  </section>
+
+  <!-- TAB 2: 機票與住宿 -->
+  <section id="tab-booking" class="view-section">
+    <div class="card">
+      <span class="badge transit">✈️ 航班資訊</span>
+      <h2 class="day-title">全程機票與訂位代號</h2>
+      <p class="day-subtitle">點擊代號可一鍵複製，過海關請備妥紙本影本</p>
+
+      <div style="margin-top:12px; padding:12px; background:var(--surface-2); border-radius:10px;">
+        <div style="font-weight:700; color:var(--uk); margin-bottom:6px;">去程｜4/16 (五) – 4/17 (六) 阿提哈德航空</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號 (PNR)</span>
+          <span class="info-val">9P38HU <button class="copy-btn" onclick="copyText('9P38HU')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">第一段 EY899</span>
+          <span class="info-val">19:40 桃園 T2 → 00:55 阿布達比 TA</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">第二段 EY61</span>
+          <span class="info-val">02:20 阿布達比 → 07:00(+1) 倫敦希斯洛 T4</span>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; padding:12px; background:var(--surface-2); border-radius:10px;">
+        <div style="font-weight:700; color:var(--accent); margin-bottom:6px;">中段｜4/25 (日) 英國航空 British Airways</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號 (PNR)</span>
+          <span class="info-val">ZHZDNA <button class="copy-btn" onclick="copyText('ZHZDNA')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">航班 BA474</span>
+          <span class="info-val">10:15 倫敦希斯洛 T5 → 13:30 巴塞隆納 T1</span>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; padding:12px; background:var(--surface-2); border-radius:10px;">
+        <div style="font-weight:700; color:var(--es); margin-bottom:6px;">回程｜4/30 (五) – 5/1 (六) 阿提哈德航空</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號 (PNR)</span>
+          <span class="info-val">9P38HU <button class="copy-btn" onclick="copyText('9P38HU')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">第一段 EY112</span>
+          <span class="info-val">10:45 巴塞隆納 T1 → 19:20 阿布達比 TA</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">第二段 EY898</span>
+          <span class="info-val">21:20 阿布達比 → 10:00(+1) 桃園 T2</span>
+        </div>
+      </div>
+
+      <details class="guide-box">
+        <summary>🛡️ 英國航空延誤/取消賠償指南 (UK261 / EU261)</summary>
+        <div class="guide-content">
+          <p>若起飛前 14 天內非不可抗力因素取消或嚴重延誤，可依法申請法定賠償金與照顧退款：</p>
+          <div class="table-wrap">
+            <table>
+              <tr><th>航程距離</th><th>代表航線</th><th>UK261</th><th>EU261</th></tr>
+              <tr><td>&lt; 1,500 km</td><td>倫敦 ↔ 巴塞隆納</td><td>£220</td><td>€250</td></tr>
+              <tr><td>1,500–3,500 km</td><td>倫敦 ↔ 雅典</td><td>£350</td><td>€400</td></tr>
+              <tr><td>&gt; 3,500 km</td><td>倫敦 ↔ 台北</td><td>£520</td><td>€600</td></tr>
+            </table>
+          </div>
+          <ul>
+            <li><strong>額外開銷退款：</strong>保留明細收據 (Itemized Receipts)，包含餐飲（不含酒精）、過夜住宿、機場往返計程車與必要通訊費。</li>
+            <li><strong>避坑重點：</strong>有權拒絕代金券 (Voucher)，要求現金/銀行轉帳（需備 SWIFT/BIC 與 IBAN）；若英航拒賠可向 <strong>CEDR</strong> 申請免費第三方仲裁。</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <span class="badge uk">🏨 住宿資訊</span>
+      <h2 class="day-title">三間飯店入住明細</h2>
+      <p class="day-subtitle">點擊地址或電話可直接複製導航</p>
+
+      <div style="margin-top:12px; padding:12px; border:1px solid var(--uk-border); background:var(--uk-bg); border-radius:10px;">
+        <div style="font-weight:700; color:var(--uk);">1. Premier Inn Hammersmith (Talgarth Road)</div>
+        <div style="font-size:0.84rem; color:var(--text-muted); margin-bottom:6px;">4/17 – 4/21 (4晚) ・ Family room ・ 不含早餐 ・ 11:00 提早入住</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號</span>
+          <span class="info-val">UAA9482195 <button class="copy-btn" onclick="copyText('UAA9482195')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">地址</span>
+          <span class="info-val">181 Talgarth Rd, London W6 8DN <button class="copy-btn" onclick="copyText('181 Talgarth Rd, London W6 8DN')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">電話</span>
+          <span class="info-val">+44 3330038101 <button class="copy-btn" onclick="copyText('+44 3330038101')">複製</button></span>
+        </div>
+        <div style="font-size:0.8rem; color:var(--text-light); margin-top:4px;">※ 抵達前 28 天取消可全額退款</div>
+      </div>
+
+      <div style="margin-top:12px; padding:12px; border:1px solid var(--uk-border); background:var(--uk-bg); border-radius:10px;">
+        <div style="font-weight:700; color:var(--uk);">2. Holiday Inn Express London - Hammersmith</div>
+        <div style="font-size:0.84rem; color:var(--text-muted); margin-bottom:6px;">4/21 – 4/25 (4晚) ・ Twin room ・ 含早餐</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號</span>
+          <span class="info-val">47311983 <button class="copy-btn" onclick="copyText('47311983')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">地址</span>
+          <span class="info-val">120-124 King St, London W6 0QU <button class="copy-btn" onclick="copyText('120-124 King St, London W6 0QU')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">電話</span>
+          <span class="info-val">+44 3719021621 <button class="copy-btn" onclick="copyText('+44 3719021621')">複製</button></span>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; padding:12px; border:1px solid var(--es-border); background:var(--es-bg); border-radius:10px;">
+        <div style="font-weight:700; color:var(--es);">3. ibis budget Barcelona Center</div>
+        <div style="font-size:0.84rem; color:var(--text-muted); margin-bottom:6px;">4/25 – 4/30 (5晚) ・ Twin room ・ 不含早餐</div>
+        <div class="info-row">
+          <span class="info-label">訂位代號</span>
+          <span class="info-val">QNBPDKCX <button class="copy-btn" onclick="copyText('QNBPDKCX')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">地址</span>
+          <span class="info-val">Carrer d'Àvila, 66, Sant Martí, 08005 Barcelona <button class="copy-btn" onclick="copyText('Carrer d'Àvila, 66, Sant Martí, 08005 Barcelona')">複製</button></span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">電話</span>
+          <span class="info-val">+34 936461191 <button class="copy-btn" onclick="copyText('+34 936461191')">複製</button></span>
+        </div>
+        <div class="callout" style="margin-bottom:0;">⚠️ 入住現場需另付 <strong>77 歐元</strong> 城市稅金。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 3: 交通與票券 -->
+  <section id="tab-transport" class="view-section">
+    <div class="card">
+      <span class="badge uk">🚇 倫敦交通攻略</span>
+      <h2 class="day-title">Apple Pay 快速交通卡 & Daily Cap</h2>
+      <p class="day-subtitle">4月日照時間約 06:10 – 20:20 ・ 建議下載 Citymapper App</p>
+
+      <div class="callout">
+        <strong>📱 iPhone「快速交通卡 (Express Transit)」設定：</strong><br>
+        錢包 App → 點選信用卡 → 右上角「...」卡片詳細資訊 → 開啟「快速交通卡設定」並驗證 Face ID。進出閘門免解鎖、免開畫面，手機頂端直接貼黃色感應圈即可！
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>規則</th><th>重點說明</th></tr>
+          <tr><td><strong>Daily Cap 每日上限</strong></td><td>04:30 AM – 次日 04:29 AM 計算。Zone 1-2 上限約 <strong>£8.50</strong>，搭 3 趟地鐵即回本，第 4 趟起免費（水上巴士不計入 Cap）。</td></tr>
+          <tr><td><strong>1. 同卡進、同卡出</strong></td><td>全程固定用同一支手機感應，切勿進站刷實體卡、出站刷手機，否則兩邊各罰最高票價 (£10+)。</td></tr>
+          <tr><td><strong>2. 一人一卡制</strong></td><td>兩人同行不可共用一支手機進出閘門，旅伴需用自己的手機、手錶或另一張信用卡。</td></tr>
+          <tr><td><strong>3. 巴士與地鐵差異</strong></td><td>地鐵/火車進出站皆需刷卡；巴士僅<strong>前門上車刷卡</strong>（單程 £1.75，1小時內轉乘免費），後門下車不需刷。</td></tr>
+          <tr><td><strong>4. 注意手機電量</strong></td><td>出站才結算扣款，中途沒電會被視同無票罰款，務必隨身攜帶行動電源。</td></tr>
+        </table>
+      </div>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin:6px 0 0;">
+        💡 <strong>Hammersmith 站電梯：</strong>Piccadilly / District 線電梯位於 Broadway Shopping Centre 內的車站入口；Circle / H&C 線電梯位於主入口附近，皆可從街道層直通月台。
+      </p>
+    </div>
+
+    <div class="card">
+      <span class="badge uk">🎟️ 英國國鐵 & 2 FOR 1 買一送一</span>
+      <h2 class="day-title">劍橋一日遊 & 漢普頓宮購票實戰</h2>
+
+      <h4 style="margin:12px 0 6px; color:var(--uk);">1. 4/23 (五) 劍橋一日遊（Trainline + 撐篙 2FOR1）</h4>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:0 0 12px;">
+        <li><strong>國鐵早鳥票 (Advance)：</strong>2027年1月底/2月初用 Trainline App 預訂。去程 09:08–10:20 (Liverpool St → Cambridge, £8)；回程 17:38–18:34 (Cambridge → King's Cross, £15.2)，選 <strong>0 changes 直達快車</strong>（50分鐘內），刷手機 QR Code 進出站。</li>
+        <li><strong>劍橋公車：</strong>上車向司機說 <em>"Small Group DayRider"</em>（£10 團體一日券，刷卡）。</li>
+        <li><strong>Rutherford's Punting 撐篙 2FOR1：</strong>上 Days Out Guide 官網領取電子憑證 (eVoucher) 或線上折扣碼，14:50 前抵達橘色制服服務台，出示 eVoucher 與當日國鐵車票（手機需留足電量）。下午3點後河面風大，建議帶防風外套。</li>
+      </ul>
+
+      <h4 style="margin:12px 0 6px; color:var(--uk);">2. 4/24 (六) 漢普頓宮（務必列印紙本！）</h4>
+      <div class="callout">
+        <strong>⚠️ 漢普頓宮現場不接受手機畫面！</strong>出發前務必在 Days Out Guide 註冊（郵遞區號填飯店 W6 8DN），出發站填 <strong>Wimbledon</strong>、到達站 <strong>Hampton Court</strong>、日期 <strong>24/04/2027</strong>、人數 <strong>2</strong>，下載 PDF 並用 <strong>A4 紙本列印</strong>！
+      </div>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:0;">
+        <li><strong>買票步驟：</strong>搭 District Line 到 Wimbledon 站出地鐵閘門 → 在 National Rail 售票機買到 <strong>Hampton Court 的紙本 Off-Peak Return 車票</strong>（2人共 £14，確認印有國鐵雙箭頭 Logo）。</li>
+        <li><strong>出站關鍵：</strong>抵達 Hampton Court 站<strong>千萬不要走自動閘門</strong>（會吃票），走旁邊<strong>人工通道</strong>出示車票說 <em>"2 for 1 voucher, please."</em> 保留票根，再到漢普頓宮售票處換買一送一門票。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="badge es">🚇 巴塞隆納交通攻略</span>
+      <h2 class="day-title">T-usual 月票購買 & 機場往返路線</h2>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:8px 0;">
+        <li><strong>TMB 售票機買 T-usual 月票：</strong>機場 T1 入境拿行李後下 B1 地鐵站 → 切換英文介面 → Buy T-mobilitat card → 選 <strong>T-usual</strong> → 選 <strong>Zone 1</strong> → <strong>輸入各自護照號碼</strong>（每人一張）→ 建議付現金（刷卡需4位數 PIN 碼）→ 列印票卡與收據。</li>
+        <li><strong>機場 T1 → 飯店：</strong>搭 <strong>L9 Sud</strong> (紫粉線) 至 Torrassa 站 → 轉 <strong>L1</strong> (紅線，Fondo 方向) 至 Urquinaona 站 → 轉 <strong>L4</strong> (橘線，La Pau 方向) 至 Llacuna / Bogatell 站下車。</li>
+        <li><strong>去聖心聖殿 (Tibidabo)：</strong>T-usual 可全程搭乘！L4 到 Urquinaona 轉紅線到 Catalunya → 轉 <strong>FGC L7</strong> 至終點 Av. Tibidabo → 轉 <strong>196 公車</strong>到 Plaça del Doctor Andreu → 搭 <strong>Cuca de Llum 登山纜車</strong>直達山頂。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="badge transit">💰 門票預算 & 官網快速連結</span>
+      <div class="table-wrap">
+        <table>
+          <tr><th>景點項目</th><th>成人票</th><th>65+ 長者票</th><th>備註</th></tr>
+          <tr><td><strong>聖家堂</strong> (門票+導覽+登塔)</td><td>€36.00</td><td>€28.00</td><td>參觀前60天(約2月中)搶票</td></tr>
+          <tr><td><strong>奎爾公園</strong> (Parc Güell)</td><td>€18.00</td><td>€13.50</td><td>選 Over 65 years old</td></tr>
+          <tr><td><strong>米拉之家</strong> (Casa Milà)</td><td>€29.00</td><td>€19.00</td><td>線上預約</td></tr>
+          <tr><td><strong>漢普頓宮</strong> (2 FOR 1)</td><td colspan="2">€30.00 (兩人總計)</td><td>需國鐵紙本票+紙本券</td></tr>
+          <tr><td><strong>劍橋撐篙</strong> (2 FOR 1)</td><td colspan="2">€30.00 (兩人總計)</td><td>Rutherford's Punting</td></tr>
+        </table>
+      </div>
+      <p style="font-size:0.86rem; color:var(--text-muted); margin:6px 0 10px;">
+        門票預計總計 <strong>€203.5</strong>；扣除門票、交通、住宿，每日餐飲雜支預算抓 <strong>€60 以內</strong>。
+      </p>
+      <div>
+        <a class="ext-link" href="https://sagradafamilia.org/en/tickets" target="_blank" rel="noopener">🔗 聖家堂官網</a>
+        <a class="ext-link" href="https://parkguell.barcelona/es/compra-entradas" target="_blank" rel="noopener">🔗 奎爾公園官網</a>
+        <a class="ext-link" href="https://tickets.lapedrera.com/en" target="_blank" rel="noopener">🔗 米拉之家官網</a>
+        <a class="ext-link" href="https://www.thamesclippers.com/booking" target="_blank" rel="noopener">🔗 Uber Boat 船票</a>
+        <a class="ext-link" href="https://www.nationalgallery.org.uk/visiting/plan-your-visit" target="_blank" rel="noopener">🔗 英國國家藝廊</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 4: 博物館藝術寶典 -->
+  <section id="tab-museums" class="view-section">
+    <div class="card">
+      <span class="badge uk">🏛️ 大英博物館 The British Museum</span>
+      <h2 class="day-title">6大鎮店之寶 & 分層參觀動線</h2>
+      <p class="day-subtitle">免費官網預約 ・ 自備行動電源與耳機（可下載官方付費導覽 App）</p>
+      <div class="callout">
+        <strong>建議動線：</strong>大門入場 → 大中庭拍玻璃穹頂 → 先逛 1F (Room 4 埃及 → Room 6/10 亞述 → Room 18/22 希臘羅馬 → Room 24 摩艾 → Room 27 美洲) → 搭北樓梯上 2F (Room 56 烏爾 → Room 52 波斯 → Room 61-64 埃及木乃伊 → Room 70 羅馬 → Room 40-41 歐洲)。
+      </div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>展間</th><th>鎮館之寶</th><th>必看細節與故事</th></tr>
+          <tr><td><strong>Room 4</strong><br>(1F 古埃及)</td><td><strong>羅塞塔石碑</strong><br>拉美西斯二世胸像</td><td>• <strong>Top 1 鎮店寶</strong>：西元前196年詔書，刻有埃及象形文、草書體、古希臘文三種文字，成功破譯古埃及文。<br>• 拉美西斯二世右胸留有拿破崙軍隊搬運時炸出的穿孔。</td></tr>
+          <tr><td><strong>Room 6 & 10</strong><br>(1F 亞述)</td><td>拉瑪蘇雙翼人面獅<br>亞述國王獵獅浮雕</td><td>• 站在人面獅側面看，共有 <strong>5 隻腳</strong>（正面2隻靜止、側面4隻行走）。<br>• 獵獅浮雕中只有國王可獵獅，服飾與眾不同。</td></tr>
+          <tr><td><strong>Room 18 & 22</strong><br>(1F 希臘羅馬)</td><td><strong>帕德嫩神廟雕刻</strong><br>摩索拉斯陵墓雕像</td><td>• <strong>Top 2</strong>：雅典衛城山牆雕像，欣賞極致「濕衣法」飄逸褶皺。<br>• 世界七大奇觀之一的巨型陵墓戰車馬匹雕像。</td></tr>
+          <tr><td><strong>Room 24 & 27</strong><br>(1F 太平洋/美洲)</td><td><strong>摩艾石像</strong><br>阿茲特克綠松石馬賽克</td><td>• <strong>Top 4</strong>：復活節島石像背面刻有鳥嘴與特殊宗教文字。<br>• 綠松石、紅海螺殼與珍珠母貝拼貼在人骨與木頭上。</td></tr>
+          <tr><td><strong>Room 52 & 56</strong><br>(2F 中東)</td><td>居魯士圓柱、阿姆河寶藏<br>烏爾旗幟</td><td>• 居魯士圓柱為「世界第一份人權宣言」。<br>• 烏爾旗幟以青金石與貝殼拼貼出「戰爭」與「和平」兩面。</td></tr>
+          <tr><td><strong>Room 61–64</strong><br>(2F 古埃及)</td><td>內巴蒙墓室壁畫<br><strong>彩繪木乃伊 & 死者之書</strong></td><td>• <strong>Top 5 & 6</strong>：收藏超過140具木乃伊（歌女凱特貝特保存極完好，膝蓋旁有僕人偶「沙伯替」）。<br>• 死者之書描繪死神阿努比斯用天秤審判死者。</td></tr>
+          <tr><td><strong>Room 70</strong><br>(2F 古羅馬)</td><td>波特蘭波浪瓶<br>奧古斯都青銅頭像</td><td>• 深藍色雙層浮雕玻璃工藝巔峰。<br>• 奧古斯都頭像眼睛鑲嵌石英與玻璃，眼神銳利。</td></tr>
+          <tr><td><strong>Room 40–41</strong><br>(2F 歐洲)</td><td><strong>路易斯西洋棋</strong><br>薩頓胡船葬頭盔</td><td>• <strong>Top 3</strong>：海象牙雕刻，觀察王后憂愁與國王配劍細節。<br>• 7世紀盎格魯-撒克遜國王頭盔，面具刻有龍與戰士。</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge uk">🎨 英國國家美術館 The National Gallery</span>
+      <h2 class="day-title">4大展區必看大師名畫</h2>
+      <p class="day-subtitle">線上預約 ・ 從 Sainsbury Wing 入口，現場租中文語音導覽</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>展區 / 展間</th><th>畫家與名作</th><th>觀賞亮點</th></tr>
+          <tr><td><strong>Zone 1 印象派</strong><br>Rooms 43–46</td><td>• 梵谷《向日葵》<br>• 莫內《日本橋與睡蓮池》<br>• 秀拉《阿尼埃爾的浴者》<br>• 雷諾瓦《傘》、德加《舞者》</td><td>開館先直衝此區避開人潮！站側面看梵谷《向日葵》如雕塑般厚實的顏料筆觸。</td></tr>
+          <tr><td><strong>Zone 2 巴洛克與英國</strong><br>Rooms 22–26, 32, 34, 38–40</td><td>• 特納《戰艦無畏號》<br>• 德拉羅什《珍·葛雷的處決》<br>• 卡拉瓦喬《以馬忤斯的晚餐》<br>• 林布蘭《34歲與63歲自畫像》<br>• 維梅爾《小鍵琴前的女子》</td><td>• 英國票選最偉大畫作《戰艦無畏號》見證工業革命取代帆船時代。<br>• 對比林布蘭34歲意氣風發與63歲破產後的深邃平靜。</td></tr>
+          <tr><td><strong>Zone 3 義大利文藝復興</strong><br>Rooms 2, 6, 8–11</td><td>• 達文西《岩間聖母》<br>• 拉斐爾《粉紅色的聖母》<br>• 提香《巴克斯與阿里阿德涅》<br>• 波提切利《維納斯與戰神》</td><td>• 達文西《岩間聖母》的「暈塗法」與精準植物地質細節。<br>• 波提切利畫中調皮小羊男正偷戴戰神盔甲吹海螺。</td></tr>
+          <tr><td><strong>Zone 4 北方文藝復興</strong><br>Rooms 14, 28, 63</td><td>• 楊·凡·艾克《阿諾菲尼的婚禮》<br>• 小漢斯·霍爾班《大使們》<br>• 布呂赫爾《博士來朝》</td><td>• 湊近看《阿諾菲尼的婚禮》牆上凸面鏡反射與凡·艾克簽名。<br>• 站《大使們》右側極斜角度往下看，下方扭曲陰影會變成立體骷髏頭！</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge uk">🖼️ 泰特現代 & V&A & 華勒斯 & 泰特不列顛</span>
+      <details class="guide-box" open>
+        <summary>🔴 泰特現代藝術館 (Tate Modern)</summary>
+        <div class="guide-content">
+          <ul>
+            <li><strong>1F 渦輪廳 (Turbine Hall)：</strong>前發電廠 35 公尺挑高鋼骨斜坡，感受巨型裝置藝術。</li>
+            <li><strong>Natalie Bell 3F：</strong>馬克·羅斯科《Black on Maroon》（坐木椅適應暗光看色彩邊界浮動）、約瑟夫·博伊斯毛氈脂肪裝置。</li>
+            <li><strong>Natalie Bell 4F：</strong>畢卡索《紅色扶手椅上的女人》《哭泣的女人》、達利《龍蝦電話》《水仙的變形》（雙重視覺幻覺）、馬蒂斯剪紙《蝸牛》。</li>
+            <li><strong>Blavatnik Level 10：</strong>搭電梯上頂樓免費 360 度觀景台，俯瞰千禧橋與聖保羅大教堂。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="guide-box">
+        <summary>👑 維多利亞與亞伯特博物館 (V&A)</summary>
+        <div class="guide-content">
+          <ul>
+            <li><strong>Rooms 46a/b (1F 鑄模展廳)：</strong>1:1 等比例複製米開朗基羅《大衛像》與拆成兩截的羅馬《圖拉真柱》。</li>
+            <li><strong>Room 48a (1F)：</strong>拉斐爾為西斯廷教堂壁毯繪製的 1:1 原始彩色畫稿。</li>
+            <li><strong>Room 42 (1F)：</strong>世界最古老《阿爾達比勒波斯地毯》（每30分鐘亮燈10分鐘保護蠶絲）。</li>
+            <li><strong>Room 100 (3F 珠寶館)：</strong>超過 3,000 件皇室珠寶，必看維多利亞女王藍寶石王冠、卡地亞水果錦囊、法貝熱彩蛋。</li>
+            <li><strong>V&A Café (1F Morris Room)：</strong>世界第一間、也是最美的博物館咖啡廳，由威廉·莫里斯設計。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="guide-box">
+        <summary>🦖 自然史博物館 (Natural History Museum)</summary>
+        <div class="guide-content">
+          <ul>
+            <li><strong>Hintze Hall 中央大廳：</strong>25公尺真實藍鯨骨架「Hope」懸掛半空，抬頭看 162 幅植物圖鑑天花板與達爾文石雕像。</li>
+            <li><strong>Earth Hall 地球廳 (Red Zone)：</strong>搭乘紅色霓虹手扶梯穿越巨大金屬地球，樓上有神戶地震模擬體驗室與龐貝城化石。</li>
+            <li><strong>Dinosaur Gallery 恐龍廳 (Blue Zone)：</strong>1:1 動態機械暴龍與第一具發現的始祖鳥化石。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="guide-box">
+        <summary>🏰 華勒斯典藏館 & 泰特不列顛 (備選精華)</summary>
+        <div class="guide-content">
+          <p><strong>華勒斯典藏館 (The Wallace Collection)：</strong>貴族豪宅私藏，必看一樓亨利四世鍍金盔甲、樓梯間路易十五鍛鐵扶手，二樓 Great Gallery 哈爾斯《微笑的騎士》、Room 18 弗拉戈納爾《鞦韆》、Room 22 布歇《蓬帕杜夫人肖像》。</p>
+          <p><strong>泰特不列顛 (Tate Britain)：</strong>擁有全球最豐富威廉·透納 (Turner) 收藏（橫跨9個展間）、拉斐爾前派米萊《奧菲莉亞》、大衛·霍克尼與歐普藝術家萊利作品。</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- TAB 5: 行前清單與購物 -->
+  <section id="tab-prep" class="view-section">
+    <div class="card">
+      <span class="badge transit">📅 預約與購票時程表</span>
+      <h2 class="day-title">行前任務勾選清單（進度自動儲存）</h2>
+      <p class="day-subtitle">點擊項目可打勾紀錄，資料保存在您的手機瀏覽器中</p>
+      <div id="checklistContainer" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="card">
+      <span class="badge uk">🛂 證件、海關與健康提醒</span>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:8px 0;">
+        <li><strong>英國 ETA 電子旅行許可：</strong>台灣護照免簽但須事先上網或用官方 App 申請 ETA（費用 £16，效期兩年）。</li>
+        <li><strong>過海關隨身文件袋（勿放託運）：</strong>護照正本、英國與西班牙旅館預訂影本、去巴塞隆納及回桃園機票影本、海外旅遊保險影本、大頭照存手機相簿。</li>
+        <li><strong>信用卡設定：</strong>綁定 Apple Pay 的信用卡建議選擇<strong>海外消費回饋 &gt; 1.5%</strong> 的卡別（抵銷 1.5% 海外手續費）。</li>
+        <li><strong>春天花粉症 (Hayfever)：</strong>4月英倫公園與街道棉絮花籽多，建議自備口罩；若過敏發作可至 <strong>Boots 藥局</strong>買綠色包裝的 <strong>「Piriteze」</strong>。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="badge es">🛍️ 英西必買伴手禮 & 退稅攻略</span>
+      <h4 style="margin:10px 0 6px; color:var(--uk);">🇬🇧 英國倫敦購物（註：英國已無觀光客退稅）</h4>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:0 0 12px;">
+        <li><strong>超市 (M&S / Sainsbury's / Waitrose)：</strong>M&S 藍色麋鹿頭蘇格蘭奶油酥餅、Walkers 奶油餅乾；茶包推薦 Twinings、PG Tips、Yorkshire Tea。</li>
+        <li><strong>藥妝 (Boots / Superdrug)：</strong>Soap & Glory 護膚品、No7、Liz Earle。</li>
+        <li><strong>平價美食：</strong>Honest Burgers、Greggs 國民麵包店、Tesco Express。</li>
+      </ul>
+
+      <h4 style="margin:10px 0 6px; color:var(--es);">🇪🇸 西班牙巴塞隆納購物（無門檻退稅！）</h4>
+      <div class="callout">
+        <strong>🇪🇸 西班牙退稅神級優勢：</strong>已取消最低消費金額門檻，<strong>每買一件都能退稅！</strong>結帳時主動出示手機護照照片說 <em>"Tax Free, please!"</em>，回國前在巴塞隆納機場 T1 刷 <strong>DIVA 機台</strong>掃描即可。
+      </div>
+      <ul style="padding-left:18px; font-size:0.9rem; color:var(--text-muted); margin:0;">
+        <li><strong>天使大街 & Gracia 大道：</strong>價格約亞洲 6–7 折！必逛 Massimo Dutti（極簡優雅）、ZARA 旗艦店、Mango 總部、Oysho 居家瑜珈服、Camper 西班牙手工皮鞋。</li>
+        <li><strong>Mercadona 超市（在地霸主，週日公休）：</strong>認準自有品牌 <strong>Hacendado</strong> —— 魚介海鮮高湯塊 (Caldo de Pescado, 約€1)、純番紅花絲 (Azafrán en Hebra, €2-3)、熟食區海鮮飯與千層麵超划算，內有免費廁所。</li>
+        <li><strong>Carrefour 家樂福：</strong>白母雞牌 (Gallina Blanca) 海鮮高湯塊、百年小女孩牌 (Carmencita) 番紅花。</li>
+        <li><strong>英國宮百貨 (El Corte Inglés)：</strong>可搭無障礙電梯直達 <strong>9 樓景觀餐廳</strong>，隔落地窗俯瞰加泰隆尼亞廣場全景。</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<nav class="bottom-nav" aria-label="主導覽列">
+  <button class="nav-btn active" data-tab="itinerary" onclick="switchTab('itinerary', this)">
+    <span class="icon">📅</span>
+    <span>每日行程</span>
+  </button>
+  <button class="nav-btn" data-tab="booking" onclick="switchTab('booking', this)">
+    <span class="icon">✈️</span>
+    <span>機票住宿</span>
+  </button>
+  <button class="nav-btn" data-tab="transport" onclick="switchTab('transport', this)">
+    <span class="icon">🚇</span>
+    <span>交通票券</span>
+  </button>
+  <button class="nav-btn" data-tab="museums" onclick="switchTab('museums', this)">
+    <span class="icon">🏛️</span>
+    <span>博物館寶典</span>
+  </button>
+  <button class="nav-btn" data-tab="prep" onclick="switchTab('prep', this)">
+    <span class="icon">✅</span>
+    <span>清單購物</span>
+  </button>
+</nav>
+
+<div id="toast" class="toast">已複製到剪貼簿</div>
+
+<script>
+const ITINERARY_DATA = [
+  {
+    day: "D1", date: "4/16 (五)", region: "transit", badge: "✈️ 出發日",
+    title: "桃園出發 → 轉機阿布達比 → 倫敦",
+    subtitle: "準備海關文件袋 ・ 希斯洛機場感應刷卡進市區",
+    events: [
+      { time: "15:30", text: "搭捷運出發 → 16:30 抵達桃園機場 T2" },
+      { time: "19:40", text: "搭乘阿提哈德航空 EY899 → 00:55 抵達阿布達比 (TA)" },
+      { time: "02:20", text: "轉乘阿提哈德航空 EY61 → 07:00(+1) 抵達倫敦希斯洛機場 Heathrow (T4)", subs: [
+        "過海關隨身預備：護照、旅館預訂影本、去巴塞隆納機票影本、保險影本。",
+        "從機場 T4 搭地鐵 Piccadilly 線到 Hammersmith，直接刷感應信用卡（Apple Pay），車程約 35 分鐘。"
+      ]}
+    ],
+    guides: []
+  },
+  {
+    day: "D2", date: "4/17 (六)", region: "uk", badge: "🇬🇧 倫敦 Day 1",
+    title: "諾丁丘彩色屋 & 波多貝羅週六市集",
+    subtitle: "Hammersmith 安頓 ・ 櫻花與木蘭花盛開的粉彩街區",
+    events: [
+      { time: "07:30", text: "Heathrow (T4) 搭 Piccadilly 線 (往 Cockfosters 方向，刷 Apple Pay) → Hammersmith 站" },
+      { time: "09:00", text: "Premier Inn Hammersmith (Talgarth Road) 寄放行李，熟悉周邊環境與超市" },
+      { time: "11:00", text: "飯店提早 Check-in 稍作休息" },
+      { time: "12:00", text: "搭 27 號公車 (往 Camden Town 方向) → Notting Hill Gate Station 下車" },
+      { time: "下午", text: "諾丁丘 & 波多貝羅市集漫步", subs: [
+        "Pembridge Rd 粉彩建築群 → Portobello Road 粉彩建築群",
+        "Denbigh Terrace → Colville Terrace → Elgin Crescent",
+        "The Notting Hill Bookshop（電影《新娘百分百》場景）",
+        "Portobello Road Market（倫敦最古老古董市場 + 週六時尚市集）",
+        "St Lukes Mews（倫敦最美街道之一）→ Lancaster Road（最多彩色房子的路）",
+        "Acklam Village Market（週六限定街頭異國小吃市集）"
+      ]},
+      { time: "傍晚", text: "搭 Circle / Hammersmith & City 線回 Hammersmith → M&S 或 Lidl 超市採買晚餐與早餐 → 飯店櫃台預訂 4/18 晚餐及 4/19 早餐" }
+    ],
+    guides: [
+      {
+        title: "🌸 諾丁丘賞花與市集小貼士",
+        items: [
+          "4月諾丁丘彩色屋街道種滿櫻花與大花瓣的「木蘭花 (Magnolias)」，街景宛如粉蠟筆畫。",
+          "星期六是波多貝羅市集最熱鬧的日子，除了古董攤位還有 Vintage 時尚市集與 Acklam 異國小吃。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D3", date: "4/18 (日)", region: "uk", badge: "🇬🇧 倫敦 Day 2",
+    title: "白金漢宮週日儀隊遊行 & 泰特現代藝術館",
+    subtitle: "卡位皇家騎兵樂隊 ・ 跨河黑衣修士站 ・ 千禧橋夕陽",
+    events: [
+      { time: "08:00", text: "Hammersmith 站買三明治 → 搭 District 線 (往 Upminster) 至 St. James's Park 下車" },
+      { time: "09:00", text: "白金漢宮 & 維多利亞女王紀念碑（09:20–09:30 前就位卡位）" },
+      { time: "10:00", text: "白金漢宮儀隊週日遊行（全程約 45 分鐘）" },
+      { time: "11:00", text: "聖詹姆士公園 (St. James's Park) 賞櫻花、鬱金香與野餐休息" },
+      { time: "13:00", text: "St. James's Park 站搭 District 線至 Blackfriars Station → 搭手扶梯上國鐵跨河玻璃走廊往 South Bank" },
+      { time: "13:30", text: "Tate Modern 泰特現代藝術館 (13:30–17:00)", subs: [
+        "1F 渦輪廳 (Turbine Hall) → Natalie Bell 3F (羅斯科、博伊斯) → Natalie Bell 4F (畢卡索、達利、馬蒂斯)",
+        "穿過 4 樓連通道 → Blavatnik Building Level 10 免費觀景台 → 1 樓 Tate Shop"
+      ]},
+      { time: "17:10", text: "漫步千禧橋 (Millennium Bridge)，欣賞泰晤士河與聖保羅大教堂天際線" },
+      { time: "18:00", text: "Mansion House 站搭 District 線 (往 Richmond) → 19:00 回旅館享用晚餐" }
+    ],
+    guides: [
+      {
+        title: "💂 白金漢宮週日遊行 3 站超車卡位攻略",
+        items: [
+          "<strong>第1站 (09:45–10:00) 威靈頓軍營外：</strong>Birdcage Walk 與 Spur Road 交叉口，拍軍樂隊與衛兵 09:55 踏出大門第一鏡頭，走過後立刻快步走向白金漢宮。",
+          "<strong>第2站 (10:05–10:15) 維多利亞紀念碑東側階梯：</strong>面向林蔭大道那一側，斜對角回頭拍宮前軍旗巡行。10:15 樂隊吹完最後一首時，立刻下階梯穿過聖詹姆士公園小徑超車。",
+          "<strong>第3站 (10:20–10:35) 林蔭大道北側：</strong>靠近 Clarence House 與聖詹姆士宮交界，正面迎接護送團旗的樂隊與衛兵！"
+        ]
+      },
+      {
+        title: "🌉 聖詹姆士公園 & 黑衣修士站亮點",
+        items: [
+          "<strong>The Blue Bridge：</strong>公園湖中央小橋可同時拍到淡粉白色吉野櫻、湖景、白廳建築與倫敦眼。",
+          "<strong>Blackfriars Station：</strong>倫敦唯一橫跨泰晤士河正中央的火車站，大片玻璃帷幕可無遮蔽遠眺聖保羅大教堂與金融城。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D4", date: "4/19 (一)", region: "uk", badge: "🇬🇧 倫敦 Day 3",
+    title: "格林威治本初子午線 & 泰晤士河遊船 & 西敏寺晚禱",
+    subtitle: "一腳跨東西半球 ・ Uber Boat 船尾搶位 ・ 免費聽西敏寺唱詩班",
+    events: [
+      { time: "08:30", text: "飯店早餐後出發 → Hammersmith 搭 District 線至 Monument 站轉 Bank 站搭 DLR (往 Lewisham) → Cutty Sark 下車" },
+      { time: "10:30", text: "格林威治公園 (Greenwich Park)：櫻花街、本初子午線跨東西半球拍照、皇家天文台旁山坡鳥瞰金融區" },
+      { time: "12:00", text: "國家航海博物館 (National Maritime Museum)：天文學家接管特展、戶外巨型瓶中船、大地圖、納爾遜制服" },
+      { time: "13:00", text: "皇后宮殿 (Queen's House)：鬱金香無柱螺旋樓梯、大廳金箔天頂、《伊莉莎白一世無敵艦隊肖像畫》" },
+      { time: "14:00", text: "格林威治市集或河邊野餐午餐" },
+      { time: "15:00", text: "搭乘 Uber Boat 水上巴士 (約40分鐘) → Westminster Pier 西敏碼頭" },
+      { time: "16:00", text: "西敏寺 Westminster Abbey（17:00 晚禱 Evensong，免費入場）" },
+      { time: "18:00", text: "大笨鐘 & 西敏宮、倫敦眼、Queen's Walk 黃金三角散步拍照" },
+      { time: "19:00", text: "Westminster 站搭 District 線 (往 Richmond) → M&S 或 Lidl 買晚餐早餐（並預訂 4/20 飯店晚餐及 4/21 早餐）" }
+    ],
+    guides: [
+      {
+        title: "🚤 Uber Boat 船尾搶位 & 沿途拍照順序",
+        items: [
+          "排隊站前段，上船直衝<strong>船尾戶外露天區</strong>（座位極少）或室內最後一排靠右窗；拍照點擊螢幕調低小太陽曝光度拍夕陽剪影。",
+          "<strong>沿途地標順序：</strong>剛離岸回頭拍舊皇家海軍學院雙圓頂 → 金絲雀碼頭摩天群 → 仰拍倫敦塔橋 → 碎片大廈與貝爾法斯特號 → 千禧橋縫隙看聖保羅圓頂 → 大笨鐘與倫敦眼。"
+        ]
+      },
+      {
+        title: "⛪ 西敏寺免費晚禱 & 大笨鐘拍照秘訣",
+        items: [
+          "<strong>西敏寺晚禱：</strong>無需買觀光門票，16:30 前至最西側「西大門」排 <em>Worshippers / Services</em> 隊伍，可欣賞中殿牛頓/達爾文墓、唱詩班獻詩與扇形拱頂聖母禮拜堂。",
+          "<strong>大笨鐘黄金三角：</strong>西敏橋北側拍紅雙層巴士同框 → 橋頭南岸紅磚拱門框住大笨鐘 → 大喬治街 (Great George St) 拍紅色電話亭+大笨鐘。避開街頭卡通玩偶合照推銷。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D5", date: "4/20 (二)", region: "uk", badge: "🇬🇧 倫敦 Day 4",
+    title: "英國國家美術館 & 波羅市場 & 聖保羅大教堂晚禱",
+    subtitle: "特拉法加廣場 ・ 梵谷向日葵 ・ 倫敦塔橋 ・ 聖保羅穹頂",
+    events: [
+      { time: "08:30", text: "Hammersmith 搭 District 線至 Westminster 站 → 步行白廳路 → 水師提督門 → 特拉法加廣場" },
+      { time: "10:00", text: "英國國家美術館 (The National Gallery)：Sainsbury Wing 入口租中文語音導覽", subs: [
+        "19世紀印象派 (Rooms 43–46：梵谷向日葵、莫內) → 17世紀巴洛克與英國 (Rooms 32, 34, 38–40：特納、林布蘭)",
+        "中庭休息 30 分鐘 → 義大利文藝復興 (Rooms 2–12：達文西、拉斐爾) → 北方文藝復興 (Rooms 14, 28, 63：凡·艾克、霍爾班)"
+      ]},
+      { time: "13:30", text: "從 Charing Cross 搭 Southeastern 火車 (往 Dartford 方向，2站) → London Bridge Station 下車" },
+      { time: "14:00", text: "波羅市場 (Borough Market) 午餐：菌菇燉飯、The Black Pig 豬肉巧巴達、Bomba Paella 海鮮燉飯" },
+      { time: "15:00", text: "倫敦塔橋 (Tower Bridge)、碎片塔 (The Shard)、倫敦塔外觀漫步" },
+      { time: "16:15", text: "從 Tower Hill Station 搭 15 號公車 (往 Charing Cross 方向) → St Paul's Churchyard 下車" },
+      { time: "16:40", text: "聖保羅大教堂 (St. Paul's Cathedral)：17:00 晚禱 (約45分鐘，西門入口)" },
+      { time: "18:00", text: "Mansion House 站搭 District 線 (往 Richmond) → 19:00 回旅館晚餐" }
+    ],
+    guides: [
+      {
+        title: "⛪ 聖保羅大教堂建築與晚禱程序",
+        items: [
+          "由建築大師 Sir Christopher Wren 設計，111 公尺三層結構巨大圓頂，西南鐘樓掛有英國最大重鐘「大保羅」。",
+          "<strong>晚禱程序 (Evensong)：</strong>進場問候 → 詩篇唱誦 → 舊約經課 → 尊主頌 → 新約經課 → 西面頌 → 使徒信經 → 祈禱讚美詩 → 祝福與壯麗管風琴後奏。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D6", date: "4/21 (三)", region: "uk", badge: "🇬🇧 倫敦 Day 5",
+    title: "換飯店 & 南肯辛頓雙博物館 & 哈洛德 & 泰晤士河夜景",
+    subtitle: "藍鯨骨架與珠寶館 ・ 埃及風哈洛德百貨 ・ 魔幻 Blue Hour 夜景",
+    events: [
+      { time: "08:50", text: "早餐後 Check out 換旅館 → Hammersmith 搭 218 公車至 Civic Campus → Holiday Inn Express 寄放行李" },
+      { time: "09:30", text: "Ravenscourt Park 站搭 District 線至 South Kensington Station → 走地下道 Museums Subway" },
+      { time: "10:00", text: "自然史博物館 (Natural History Museum)：Cromwell Rd 正門 → Hintze Hall 藍鯨骨架 → Earth Hall 地心電梯 → 恐龍廳動態暴龍" },
+      { time: "11:00", text: "維多利亞與亞伯特博物館 (V&A)：Rooms 46a/b 大衛像鑄模 → Room 48a 拉斐爾畫稿 → Room 42 波斯地毯 → 3F Room 100 珠寶館 & 時尚館 → 1F Morris Room 咖啡廳" },
+      { time: "14:00", text: "搭地鐵回 Hammersmith → German Doner Kebab (GDK) 買午餐 → 15:00 Check in 休息" },
+      { time: "17:30", text: "搭 Piccadilly 線至 Knightsbridge 下車 → 18:00 逛哈洛德百貨公司 (Harrods，必看埃及風中央手扶梯、買茶包)" },
+      { time: "19:00", text: "Piccadilly 線至 Holborn 轉 Central 線到 Liverpool Street Station 探路（為週五搭車去劍橋踩點）" },
+      { time: "20:00", text: "搭地鐵至 Westminster 站買晚餐 → 欣賞泰晤士河夜景 (20:00–21:00)：大笨鐘、西敏宮、倫敦眼、Queen's Walk → 21:00 搭 District 線回旅館" }
+    ],
+    guides: [
+      {
+        title: "🌃 泰晤士河 Blue Hour 夜景拍攝秘訣",
+        items: [
+          "4月下旬日落約 20:15 左右，太陽落入地平線後的 20 分鐘「Blue Hour」，大笨鐘四面鐘盤與倫敦眼會亮起金黃燈光，配上深藍色夜空最為魔幻。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D7", date: "4/22 (四)", region: "uk", badge: "🇬🇧 倫敦 Day 6",
+    title: "大英博物館深度巡禮 & 攝政街購物 & 肯辛頓花園",
+    subtitle: "羅塞塔石碑與木乃伊 ・ Liberty 百年木造百貨 ・ 肯辛頓高級住宅區",
+    events: [
+      { time: "09:00", text: "早餐後搭 Piccadilly 線 (往 Cockfosters) 至 Russell Square 下車" },
+      { time: "10:00", text: "大英博物館 (The British Museum)：大中庭 → 1F (Room 4 羅塞塔石碑、亞述人面飛獅、帕德嫩雕刻) → 2F (居魯士圓柱、木乃伊、波特蘭瓶、路易斯西洋棋)" },
+      { time: "13:00", text: "Taco Bell 買午餐至 Bloomsbury Square 野餐" },
+      { time: "14:00", text: "搭 55 號公車至 Oxford Circus Stn → 逛牛津街、攝政街 (Liberty London 都鐸木造百貨、Hamleys 玩具店)、Carnaby St、Savile Row 訂製西裝街" },
+      { time: "17:00", text: "Piccadilly Circus 搭 9 號公車至 Royal Albert Hall 下車 → 阿爾伯特紀念亭、肯辛頓花園、肯辛頓宮 (Sunken Garden)" },
+      { time: "18:15", text: "漫步 High Street Kensington 肯辛頓高街 → M&S 超市買晚餐 → 19:00 搭 27 號公車回 Hammersmith" }
+    ],
+    guides: [
+      {
+        title: "🛍️ 西倫敦散步彩蛋",
+        items: [
+          "<strong>Kynance Mews：</strong>就在 High Street Kensington 站附近，被譽為倫敦最美馬廄巷，4月春天常有紫藤花與拱門美景。",
+          "<strong>肯辛頓高街尋寶：</strong>除了 COS、UNIQLO，Kensington Church Street 有許多古董店與慈善二手精品店 (Oxfam / Shelter)。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D8", date: "4/23 (五)", region: "uk", badge: "🇬🇧 劍橋一日遊",
+    title: "劍橋大學城巡禮 & 康河撐篙 Punting & 9¾ 月台",
+    subtitle: "牛頓蘋果樹 ・ 徐志摩再別康橋碑 ・ 國王十字車站哈利波特月台",
+    events: [
+      { time: "08:00", text: "飯店早餐後出發 → 08:20 Hammersmith 搭 H&C 線至 Liverpool Street 站" },
+      { time: "09:08", text: "搭乘 Greater Anglia 國鐵快車 (09:08–10:20) 抵達劍橋站 (CBG)" },
+      { time: "10:30", text: "Stop 8 或 9 搭 Citi 1 或 3 公車（向司機買 Small Group DayRider £10 團體一日券）→ St Andrew's Street 下車" },
+      { time: "11:00", text: "基督學院 (Christ's College) → M&S 超市買午餐" },
+      { time: "12:00", text: "Rutherford's Punting 康河撐篙（使用 2 FOR 1，欣賞 The Backs 後園、數學橋、嘆息橋）" },
+      { time: "13:00", text: "Wren Library 雷恩圖書館 (12:00–14:00開放) & Garret Hostel Bridge" },
+      { time: "14:00", text: "三一學院 (Trinity College) 找門口牛頓蘋果樹 → 14:30 劍橋市集廣場 & Jack's Gelato 冰淇淋" },
+      { time: "15:30", text: "國王學院 (King's College 禮拜堂扇形拱頂 & 再別康橋碑) → 16:00 聖體鐘 → 銀街、數學橋 → 16:30 彭布羅克學院" },
+      { time: "17:00", text: "Emmanuel Street (Stop E2) 搭 Citi 1 回車站 → 17:38–18:34 搭 Great Northern 火車返抵 London King's Cross (KGX)" },
+      { time: "19:00", text: "朝聖 King's Cross 9¾ 月台 → 搭 H&C 線回 Hammersmith" }
+    ],
+    guides: [
+      {
+        title: "🚣 劍橋撐篙與學院看點",
+        items: [
+          "<strong>Rutherford's Punting：</strong>劍橋學生船夫邊撐篙邊導覽約45分鐘，精華風景全集中在「The Backs（後園）」，可從河上仰拍嘆息橋與國王學院禮拜堂。",
+          "<strong>Jack's Gelato：</strong>全英國最好吃的手工義式冰淇淋之一，推薦伯爵茶、海鹽焦糖或橄欖油口味。"
+        ]
+      }
+    ]
+  },
+  {
+    day: "D9", date: "4/24 (六)", region: "uk", badge: "🇬🇧 倫敦近郊",
+    title: "漢普頓宮 2FOR1 & 里奇蒙泰晤士河畔小鎮",
+    subtitle: "亨利八世都鐸皇宮 ・ 十萬株鬱金香節 ・ 樹籬迷宮 ・ 雙層巴士景觀回程",
+    events: [
+      { time: "08:30", text: "Hammersmith 搭 District 線 (往 Upminster) 至 Earl's Court 轉同線往 Wimbledon 方向" },
+      { time: "09:10", text: "Wimbledon 站出閘門 → 國鐵售票機買到 Hampton Court 的「紙本車票」→ 搭 SWR 火車抵達 Hampton Court（走人工通道保留票根！）" },
+      { time: "10:00", text: "漢普頓宮 Hampton Court Palace（出示紙本車票 + A4列印 2FOR1 優惠券買一送一）", subs: [
+        "領取免費中文語音導覽：亨利八世大廳 → 鬧鬼走廊 → 皇家禮拜堂 → 威廉三世巴洛克宮殿 → 亨利八世巨大廚房",
+        "皇家花園鬱金香花海 → 樹籬迷宮 (The Maze，秘訣：永遠沿著右手邊牆壁走！)"
+      ]},
+      { time: "下午", text: "搭 R68 景觀公車 (坐二樓最前排！) 至 Cresswell Road 下車漫步里奇蒙 (Richmond)", subs: [
+        "Richmond Bridge 古橋 → Richmond Riverside 河畔散步 → Paved Ct 買義大利三明治去 Richmond Green 野餐 → Richmond Palace & Brewers Ln"
+      ]},
+      { time: "傍晚", text: "從 George Street (Stop A) 搭 190 公車或地鐵回 Hammersmith → Livat 與 M&S 採買 → 打包行李 → 請飯店櫃台準備明早外帶早餐！" }
+    ],
+    guides: []
+  },
+  {
+    day: "D10", date: "4/25 (日)", region: "es", badge: "🇪🇸 飛往巴塞隆納",
+    title: "倫敦飛往巴塞隆納 → 凱旋門 & 海洋聖母聖殿",
+    subtitle: "買 T-usual 月票 ・ 100 Montaditos 週日1歐元日 ・ 哥德式聖殿",
+    events: [
+      { time: "05:30", text: "起床 → 06:10 Check out 領取打包早餐 → 06:29 搭 Piccadilly 線往 Heathrow T5 (07:07 抵達)" },
+      { time: "10:15", text: "搭乘英國航空 BA474 (訂位 ZHZDNA) → 13:30 抵達巴塞隆納機場 BCN (T1)", subs: [
+        "過海關預備：護照、旅館預訂影本、回桃園機票影本、保險影本。",
+        "下 B1 地鐵站購買 T-usual 月票 (需輸入護照號碼)，搭 L9 S → Torrassa 轉 L1 → Urquinaona 轉 L4 → Llacuna 站下車。"
+      ]},
+      { time: "15:30", text: "ibis Budget Barcelona Center Check in 休息" },
+      { time: "16:30", text: "100 Montaditos | Marina 享用週日 1 歐元迷你三明治促銷晚餐" },
+      { time: "17:15", text: "漫步巴塞隆納凱旋門 (Arc de Triomf) & 城堡公園 (Parc de la Ciutadella 黃金戰車噴泉)" },
+      { time: "18:00", text: "參觀海洋聖母聖殿 (Santa Maria del Mar) → Condis 超市採買" }
+    ],
+    guides: []
+  },
+  {
+    day: "D11", date: "4/26 (一)", region: "es", badge: "🇪🇸 巴塞隆納 Day 2",
+    title: "哥德區歷史巡禮 & 聖卡特琳娜市場 & 加泰羅尼亞音樂宮",
+    subtitle: "13隻白鵝主教座堂 ・ 畢卡索壁畫 ・ 吻牆與天使大街血拼",
+    events: [
+      { time: "08:30", text: "出發搭地鐵 L4 線前往老城區" },
+      { time: "09:00", text: "國王廣場 (Plaça del Rei) → 奧古斯都神殿羅馬石柱 → 主教橋 (Pont del Bisbe) → Pati dels Tarongers" },
+      { time: "10:00", text: "巴塞隆納主教座堂 (Catedral de Barcelona) 入內參觀：鵝井迴廊 (13隻白鵝)、金羊毛騎士團詩班席、雷班托基督小堂、地下墓室" },
+      { time: "12:00", text: "Casa de l'Ardiaca (尋找多門內克燕子與烏龜石雕郵筒) → COAC 建築師協會 (外牆畢卡索壁畫)" },
+      { time: "12:30", text: "聖卡特琳娜市場 (Mercat de Santa Caterina)：彩色波浪屋頂、現切伊比利火腿、西班牙烘蛋、上廁所（憑消費收據免費）→ 附近公園午餐休息" },
+      { time: "14:00", text: "加泰羅尼亞音樂宮 (Palau de la Música Catalana) 外觀欣賞：轉角《加泰隆尼亞民間歌謠》雕刻、二樓馬賽克花彩柱廊" },
+      { time: "15:00", text: "打卡「吻牆」→ 逛天使大街 (記得喊 Tax Free!) → 英國宮百貨 9 樓俯瞰加泰隆尼亞廣場 → Mercadona 超市採買" }
+    ],
+    guides: []
+  },
+  {
+    day: "D12", date: "4/27 (二)", region: "es", badge: "🇪🇸 巴塞隆納 Day 3",
+    title: "聖家堂入內+登塔 & 聖保羅醫院 & 蒙特惠奇山夕陽",
+    subtitle: "高第廣場水池倒影 ・ 世界最美現代主義醫院 ・ 飛碟天台俯瞰西班牙廣場",
+    events: [
+      { time: "08:30", text: "搭 L4 轉 L2 至聖家堂 → 先到東面高第廣場公園水池拍聖家堂完美倒影與全景" },
+      { time: "09:00", text: "聖家堂 (Sagrada Família) 深度參觀（下載官方 App 並自備耳機）", subs: [
+        "09:00–09:20 誕生立面（生命之樹、希望/信仰/慈善三門、海龜與陸龜柱基）",
+        "09:30 搭電梯登頂誕生立面塔樓，近看威尼斯馬賽克果實塔尖與斐波那契螺旋石階",
+        "10:00–11:00 教堂內部樹狀雙向螺旋柱與東側翠綠湛藍彩繪玻璃晨光（貼黑色大理石基座拍天花板倒影）",
+        "11:00–12:30 受難立面（33數字魔方）→ 地下博物館高第逆吊索物理模型與高第墓 → 聖家堂廣場拍受難立面全景"
+      ]},
+      { time: "13:00", text: "La Granota & Co 享用午餐 (約 €14.9) → 沿高第大道斜角林蔭道散步" },
+      { time: "15:00", text: "聖十字聖保羅醫院 (Recinte Modernista de Sant Pau) 外觀欣賞紅磚粉彩童話建築群" },
+      { time: "15:45", text: "搭 L5 轉 L3 至 Paral·lel 站 → 轉 FM 登山纜車 → 轉 150 公車至 Castell 下車" },
+      { time: "16:30", text: "蒙特惠奇山觀景台 & 山頂城堡外觀 → 搭 150 公車至加泰隆尼亞國家藝術博物館 (MNAC 平台俯瞰全景)" },
+      { time: "傍晚", text: "搭露天手扶梯下山 → 威尼斯雙塔 → 西班牙廣場 → 阿勒那競技場購物中心（免費搭電梯上頂樓「飛碟天台」360度看夕陽）→ Mercadona 超市" }
+    ],
+    guides: []
+  },
+  {
+    day: "D13", date: "4/28 (三)", region: "es", badge: "🇪🇸 巴塞隆納 Day 4",
+    title: "格拉西亞大道高第建築群 & 蘭布拉大道 & 聖家堂夜景",
+    subtitle: "米拉之家與巴特由之家 ・ 皇家廣場高第路燈 ・ 21:00 璀璨聖家堂夜景",
+    events: [
+      { time: "09:00", text: "參觀米拉之家 (Casa Milà)：波浪採石場外觀、海藻鐵藝陽台、星際大戰武士造型煙囪天台" },
+      { time: "11:00", text: "外觀拍攝巴特由之家 (Casa Batlló 彩色龍鱗屋頂與面具陽台) & 隔壁階梯山牆的阿馬特耶之家" },
+      { time: "11:45", text: "格拉西亞大道 (Passeig de Gràcia) 逛街：Loewe、古老宮殿內的 Massimo Dutti、ZARA 旗艦店" },
+      { time: "13:00", text: "100 Montaditos 享用週三 1 歐元促銷午餐" },
+      { time: "14:00", text: "漫步蘭布拉大道 (La Rambla，注意隨身財物防扒手！)", subs: [
+        "卡納雷特斯噴泉 (喝水重返傳說) → 波蓋利亞市場 → 地面米羅圓形馬賽克 → 傘店之家青銅飛龍",
+        "皇家廣場 (看高第設計的雙頭神鞭路燈) → 奎爾宮外觀 → 哥倫布紀念碑 → 貝爾港木棧道海濱散步"
+      ]},
+      { time: "18:00", text: "回飯店休息與晚餐" },
+      { time: "21:00", text: "前往聖家堂廣場拍攝「聖家堂夜景」（20:45–21:30 魔幻深藍夜空與點燈對比最美！）" }
+    ],
+    guides: []
+  },
+  {
+    day: "D14", date: "4/29 (四)", region: "es", badge: "🇪🇸 巴塞隆納 Day 5",
+    title: "奎爾公園童話世界 & 維森斯之家 & 海灘/自由行",
+    subtitle: "馬賽克大蜥蜴與糖果屋 ・ 高第處女作 ・ 最後採買與打包",
+    events: [
+      { time: "08:30", text: "出發搭 L4 至 Alfons X 站 → 出站到馬路中央公車專用島轉 V19 公車 → Albert Llanas - Muga 下車步行2分鐘" },
+      { time: "09:30", text: "奎爾公園 (Parc Güell) 入內參觀（東側入口進、前門大門出，全下坡最省力！）", subs: [
+        "鳥巢石窟 → 洗衣婦傾斜石柱長廊 → 希臘劇院波浪馬賽克長椅大平台 → 百柱廳 → 彩色馬賽克大蜥蜴 (El Drac) → 兩座童話薑餅屋"
+      ]},
+      { time: "12:30", text: "維森斯之家 (Casa Vicens) 外觀拍照：高第第一座住宅作品，金盞花瓷磚與新摩爾式角塔" },
+      { time: "13:00", text: "Elisabets Restaurant 享用西班牙超值商業午餐 Menu del Día (約 €14.5)" },
+      { time: "下午", text: "MANGO Outlet 尋寶 → Barceloneta Beach 地中海海灘散步或市區自由逛（備選：搭纜車上聖心聖殿）" },
+      { time: "傍晚", text: "Lidl 或 Mercadona 超市採買晚餐、明早早餐及登機點心 → 回飯店整理退稅單與打包行李" }
+    ],
+    guides: []
+  },
+  {
+    day: "D15", date: "4/30 (五)", region: "transit", badge: "✈️ 返程日",
+    title: "巴塞隆納機場退稅 → 阿布達比轉機",
+    subtitle: "提前抵達 T1 刷 DIVA 退稅機台 ・ 滿載回憶啟程回家",
+    events: [
+      { time: "05:30", text: "起床整理 → 06:20 Check out" },
+      { time: "06:35", text: "Bogatell / Llacuna 站搭 L4 → Urquinaona 轉 L1 → Torrassa 轉 L9 Sud 直達 Aeroport T1" },
+      { time: "07:45", text: "抵達巴塞隆納機場 BCN (T1) → 辦理 DIVA 電子退稅、托運行李與 Check in" },
+      { time: "10:45", text: "搭乘阿提哈德航空 EY112 → 19:20 抵達阿布達比 (TA)" },
+      { time: "21:20", text: "轉乘阿提哈德航空 EY898 飛往台北" }
+    ],
+    guides: []
+  },
+  {
+    day: "D16", date: "5/1 (六)", region: "transit", badge: "🏠 平安抵家",
+    title: "抵達桃園機場 → 溫暖的家",
+    subtitle: "2027 英西 16日深度之旅圓滿成功",
+    events: [
+      { time: "10:00", text: "平安抵達桃園國際機場 TPE (T2) → 搭乘機場捷運返家休息" }
+    ],
+    guides: []
+  }
+];
+
+const CHECKLIST_ITEMS = [
+  { id: "c1", date: "11月", text: "預約 4/21 (10:00) 自然史博物館 Natural History Museum 免費門票" },
+  { id: "c2", date: "11月", text: "預約 4/19 (14:00) 王后宮 Queen's House 免費門票" },
+  { id: "c3", date: "11月", text: "預約 4/19 (14:00) 國家航海博物館 National Maritime Museum 免費門票" },
+  { id: "c4", date: "1/4 (一)", text: "辦理/檢查護照效期（需有6個月以上效期）" },
+  { id: "c5", date: "1/4 (一)", text: "預約 4/20 (10:00) 英國國家美術館 The National Gallery 免費門票" },
+  { id: "c6", date: "1/20", text: "預約 4/22 (10:00) 大英博物館 The British Museum 免費門票" },
+  { id: "c7", date: "2/1 (一)", text: "註冊 Days Out Guide，領取劍橋撐篙 eVoucher 與「列印漢普頓宮 A4 紙本 2FOR1 券」" },
+  { id: "c8", date: "2/1 (一)", text: "Trainline App 購買 4/23 劍橋往返國鐵早鳥直達票 (Advance)" },
+  { id: "c9", date: "2/1 (一)", text: "官網預訂 4/19 格林威治 → 西敏碼頭 Uber Boat 水上巴士船票" },
+  { id: "c10", date: "2月中旬", text: "聖家堂官網搶訂 4/27 門票+導覽+登塔（參觀前60天開放第一時間下訂）" },
+  { id: "c11", date: "2月中旬", text: "奎爾公園官網 & 米拉之家官網線上購票（長者選 65+ 優惠票）" },
+  { id: "c12", date: "3/1 (一)", text: "上網或官方 App 申請英國 ETA 電子旅行許可 (£16)" },
+  { id: "c13", date: "4/1 (四)", text: "寫信/聯繫確認英國兩間與西班牙一間住宿飯店訂房" },
+  { id: "c14", date: "出發前", text: "iPhone 錢包設定「快速交通卡」、列印過海關文件影本、準備行動電源與耳機" }
+];
+
+function renderItinerary() {
+  const scroller = document.getElementById("dayScroller");
+  const container = document.getElementById("daysContainer");
+
+  ITINERARY_DATA.forEach((item, idx) => {
+    // Pill
+    const pill = document.createElement("button");
+    pill.className = `day-pill ${item.region} ${idx === 0 ? "active" : ""}`;
+    pill.dataset.target = `day-${item.day}`;
+    pill.innerHTML = `<span>${item.day}</span><span class="sub">${item.date.split(" ")[0]}</span>`;
+    pill.onclick = () => {
+      document.querySelectorAll(".day-pill").forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      const el = document.getElementById(`day-${item.day}`);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 165;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+    scroller.appendChild(pill);
+
+    // Card
+    const card = document.createElement("article");
+    card.className = `card searchable-card ${item.region === "es" ? "es-card" : ""}`;
+    card.id = `day-${item.day}`;
+
+    let eventsHtml = item.events.map(ev => {
+      let subsHtml = "";
+      if (ev.subs && ev.subs.length) {
+        subsHtml = `<ul class="tl-sub">${ev.subs.map(s => `<li>${s}</li>`).join("")}</ul>`;
+      }
+      return `
+        <div class="tl-item">
+          <span class="tl-time">${ev.time}</span>
+          <div class="tl-main">${ev.text}</div>
+          ${subsHtml}
+        </div>
+      `;
+    }).join("");
+
+    let guidesHtml = "";
+    if (item.guides && item.guides.length) {
+      guidesHtml = item.guides.map(g => `
+        <details class="guide-box">
+          <summary>${g.title}</summary>
+          <div class="guide-content">
+            <ul>${g.items.map(i => `<li>${i}</li>`).join("")}</ul>
+          </div>
+        </details>
+      `).join("");
+    }
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div>
+          <span class="badge ${item.region}">${item.badge} ・ ${item.date}</span>
+          <h2 class="day-title">${item.day}｜${item.title}</h2>
+          <p class="day-subtitle">${item.subtitle}</p>
+        </div>
+      </div>
+      <div class="timeline">${eventsHtml}</div>
+      ${guidesHtml}
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderChecklist() {
+  const container = document.getElementById("checklistContainer");
+  let saved = {};
+  try {
+    saved = JSON.parse(localStorage.getItem("trip2027_checklist") || "{}");
+  } catch (e) {}
+
+  CHECKLIST_ITEMS.forEach(item => {
+    const isChecked = !!saved[item.id];
+    const label = document.createElement("label");
+    label.className = `check-item ${isChecked ? "done" : ""}`;
+    label.innerHTML = `
+      <input type="checkbox" ${isChecked ? "checked" : ""} data-id="${item.id}">
+      <div class="check-text">
+        <span class="badge transit" style="margin-right:6px;">${item.date}</span>
+        <span>${item.text}</span>
+      </div>
+    `;
+    const cb = label.querySelector("input");
+    cb.onchange = () => {
+      label.classList.toggle("done", cb.checked);
+      saved[item.id] = cb.checked;
+      try {
+        localStorage.setItem("trip2027_checklist", JSON.stringify(saved));
+      } catch (e) {}
+    };
+    container.appendChild(label);
+  });
+}
+
+function switchTab(tabName, btn) {
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  document.querySelectorAll(".view-section").forEach(s => s.classList.remove("active"));
+  document.getElementById(`tab-${tabName}`).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => showToast(`已複製：${text}`));
+  } else {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+    showToast(`已複製：${text}`);
+  }
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2000);
+}
+
+// Global Search across all sections
+const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearSearch");
+const searchBanner = document.getElementById("searchBanner");
+const searchCount = document.getElementById("searchCount");
+
+searchInput.addEventListener("input", () => {
+  const q = searchInput.value.trim().toLowerCase();
+  clearBtn.style.display = q ? "flex" : "none";
+
+  if (!q) {
+    resetSearch();
+    return;
+  }
+
+  // Show all view sections when searching so nothing is missed
+  document.querySelectorAll(".view-section").forEach(s => s.classList.add("active"));
+  document.getElementById("dayScrollerWrap").style.display = "none";
+
+  let matches = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const text = card.innerText.toLowerCase();
+    if (text.includes(q)) {
+      card.style.display = "block";
+      card.querySelectorAll("details").forEach(d => d.open = true);
+      matches++;
+    } else {
+      card.style.display = "none";
+    }
+  });
+
+  searchBanner.style.display = "flex";
+  searchCount.textContent = `搜尋「${searchInput.value.trim()}」找到 ${matches} 張資訊卡`;
+});
+
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  resetSearch();
+  searchInput.focus();
+});
+
+function resetSearch() {
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+  searchBanner.style.display = "none";
+  document.getElementById("dayScrollerWrap").style.display = "block";
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = "block";
+  });
+
+  const activeNav = document.querySelector(".nav-btn.active");
+  const activeTab = activeNav ? activeNav.dataset.tab : "itinerary";
+  document.querySelectorAll(".view-section").forEach(s => s.classList.remove("active"));
+  document.getElementById(`tab-${activeTab}`).classList.add("active");
+}
+
+// Highlight active day pill on scroll
+window.addEventListener("scroll", () => {
+  if (searchInput.value.trim()) return;
+  const itinerarySec = document.getElementById("tab-itinerary");
+  if (!itinerarySec.classList.contains("active")) return;
+
+  const cards = document.querySelectorAll("#daysContainer .card");
+  let currentId = "";
+  cards.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    if (rect.top <= 200) {
+      currentId = c.id;
+    }
+  });
+
+  if (currentId) {
+    document.querySelectorAll(".day-pill").forEach(p => {
+      const isMatch = p.dataset.target === currentId;
+      p.classList.toggle("active", isMatch);
+      if (isMatch) {
+        p.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      }
+    });
+  }
+}, { passive: true });
+
+renderItinerary();
+renderChecklist();
+</script>
+</body>
+</html>
